@@ -53,10 +53,11 @@ class recognition:
 		# TODO: create layers with push and a for
 		# Create the model of layers
 		model = Sequential([
-			keras.layers.Dense(self.inputsize, activation=tf.nn.sigmoid, input_dim=self.inputsize),
-			keras.layers.Dense(self.middlesize, activation=tf.nn.softplus),
+			keras.layers.Dense(self.inputsize, activation=tf.nn.relu, input_dim=self.inputsize),
 			keras.layers.Dense(self.middlesize, activation=tf.nn.selu),
-			keras.layers.Dense(self.outputize, activation=tf.nn.sigmoid)
+			keras.layers.Dense(self.middlesize, activation=tf.nn.sigmoid),
+			# keras.layers.Dense(self.middlesize, activation=tf.nn.relu),
+			keras.layers.Dense(self.outputize, activation=tf.nn.relu)
 		])
 
 		sgd = optimizers.SGD(lr=self.lr, decay=1e-6, momentum=0.9, nesterov=True)
