@@ -7,14 +7,13 @@ u.show("Importando clases")
 from recognition import recognition
 from loader import loader
 
-## Initialize the recognizer
+## Initialize the recognizer and give him some interface
 r = recognition(u)
 l = loader()
 u.show("Clases importadas e inicializadas", "success")
 
 # Cargar datos del CSV
 data = l.get()
-print (data)
 
 # Establecer epocas
 epochs = u.askNumber("Con cuantas epocas desea probar?", "warning")
@@ -30,8 +29,7 @@ if middlesize <= 0 or middlesize > 20:
 r.set(
     data['inputs'],
     data['targets'],
-    # Test data (not automatized bc meh)
-    [[0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+    [],
     epochs = epochs,
     middlesize = middlesize
 )
