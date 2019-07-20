@@ -1,5 +1,7 @@
 # Import and initialize UI
 from ux import ui
+import math
+
 u = ui()
 
 u.show("Importando clases")
@@ -22,14 +24,28 @@ if epochs <= 0 or epochs > 10000:
     epochs = 5000
 
 middlesize = u.askNumber("Cuantas neuronas desea en la capa interior?", "warning")
-if middlesize <= 0 or middlesize > 20:
+if middlesize <= 0 or middlesize > 10000:
     u.show("La cantidad de epocas no es coherente, se han establecido 13", "warning")
-    middlesize = 13
+    middlesize = 10
 
 r.set(
     data['inputs'],
     data['targets'],
-    [],
+    # TODO: Automate things
+    [[
+        1,
+        1
+    ],
+    [
+        10,
+        100
+    ],
+    [   15,
+        15 * 15
+    ],
+    [   20,
+        20 * 20
+    ]], 
     epochs = epochs,
     middlesize = middlesize
 )

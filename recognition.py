@@ -53,11 +53,10 @@ class recognition:
 		# TODO: create layers with push and a for
 		# Create the model of layers
 		model = Sequential([
-			keras.layers.Dense(self.inputsize, activation=tf.nn.relu, input_dim=self.inputsize),
-			keras.layers.Dense(self.middlesize, activation=tf.nn.selu),
-			keras.layers.Dense(self.middlesize, activation=tf.nn.sigmoid),
-			# keras.layers.Dense(self.middlesize, activation=tf.nn.relu),
-			keras.layers.Dense(self.outputize, activation=tf.nn.relu)
+			keras.layers.Dense(self.inputsize, activation=tf.nn.sigmoid, input_dim=self.inputsize),
+			keras.layers.Dense(self.middlesize, activation=tf.nn.tanh),
+			keras.layers.Dense(self.middlesize, activation=tf.nn.tanh),
+			keras.layers.Dense(self.outputize, activation=tf.nn.sigmoid)
 		])
 
 		sgd = optimizers.SGD(lr=self.lr, decay=1e-6, momentum=0.9, nesterov=True)
@@ -71,12 +70,8 @@ class recognition:
 		# Create a model
 		history = model.fit(Inputs, Targets, epochs=self.epochs)
 
-		# Don't test anything
-		# TODO: Implement any tests
-		# Create a test case
-		#test = np.asarray(self.test)
-		#predictions = model.predict(test)
-		predictions = [0]
+		test = np.asarray(self.test)
+		predictions = model.predict(test)
 
 
 		print("Estimaciones = ")

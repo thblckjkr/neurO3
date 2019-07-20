@@ -18,22 +18,18 @@ class loader:
                 row = y.split(",")
 
                 # Ignore ROWS that contain a NULL
-                if row[2] == 'NULL' or row[3] == 'NULL' or float(row[2]) < 6 or float(row[2]) > 25  :
+                if row[2] == 'NULL' or row[3] == 'NULL':
                     continue
 
                 # Add data
                 results[ 'inputs'].append([
                     float(row[2]),
-                    float(row[2]) * float(row[2]),
-                    math.sin(float(row[2])),
-                    math.cos(float(row[2]))
+                    float(row[2]) * float(row[2])
                 ])
 
                 results['targets'].append([
                     float(row[3]),
-                    float(row[3]) * float(row[3]),
-                    math.sin(float(row[3])),
-                    math.cos(float(row[3]))
+                    float(row[3]) * float(row[3])
                 ] )
 
         return results
